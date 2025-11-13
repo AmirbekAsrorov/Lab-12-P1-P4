@@ -1,0 +1,78 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cmath>
+using namespace std;
+
+int hashCodeInt(int k) {
+    return k;
+}
+
+int compressDivision(int y, int N) {
+    return abs(y) % N;
+}
+
+int compressMAD(int y, int N, int a, int b) {
+    return abs(a * y + b) % N;
+}
+
+int hashCodeString(const string& s) {
+    const int a = 33;
+    int hash = 0;
+    for (int i = 0; i < s.length(); ++i) {
+        hash = hash * a + (unsigned char)s[i];
+    }
+    return hash;
+}
+
+int main() {
+    int N = 53, a = 31, b = 7;
+
+    cout << "Enter number of integer keys: ";
+    int numIntKeys;
+    cin >> numIntKeys;
+    vector<int> intKeys(numIntKeys);
+
+    cout << "Enter " << numIntKeys << " integer keys:\n";
+    for (int i = 0; i < numIntKeys; i++) {
+        cin >> intKeys[i];
+    }
+
+    cout << "\nInteger keys (N = " << N << ", a = " << a << ", b = " << b << "):\n";
+    cout << "Key  HashCode  Division  MAD\n";
+    for (int key : intKeys) {
+        cout << key << "  " << hashCodeInt(key) << "  "
+             << compressDivision(key, N) << "  "
+             << compressMAD(key, N, a, b) << endl;
+    }
+
+    cout << "\nEnter number of string keys: ";
+    int numStrKeys;
+    cin >> numStrKeys;
+    vector<string> strKeys(numStrKeys);
+
+    cout << "Enter " << numStrKeys << " string keys:\n";
+    for (int i = 0; i < numStrKeys; i++) {
+        cin >> strKeys[i];
+    }
+
+    cout << "\nString keys (N = " << N << ", a = " << a << ", b = " << b << "):\n";
+    cout << "Word  HashCode  Division  MAD\n";
+    for (const string& word : strKeys) {
+        cout << word << "  " << hashCodeString(word) << "  "
+             << compressDivision(hashCodeString(word), N) << "  "
+             << compressMAD(hashCodeString(word), N, a, b) << endl;
+    }
+
+    cout << "\nStudent records (h(id) = id mod 10):\n";
+    int Nstudents = 10;
+    vector<int> studentIds = {1400, 1401, 1402, 1552, 1398, 1399};
+    vector<string> studentNames = {"Ali", "Sara", "John", "Emily", "Hasan", "Layla"};
+
+    for (int i = 0; i < studentIds.size(); i++) {
+        cout << "ID = " << studentIds[i] << ", Name = " << studentNames[i]
+             << " -> index = " << studentIds[i] % Nstudents << endl;
+    }
+
+    return 0;
+}
