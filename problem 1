@@ -1,3 +1,40 @@
+// #include <iostream>
+// #include <string>
+// #include <vector>
+// using namespace std;
+//
+// int hashCodeString(const string& s) {
+//     const int a = 33;
+//     int hash = 0;
+//
+//     for (int i = 0; i < s.length(); ++i) {
+//         hash = hash * a + (unsigned char)s[i];
+//     }
+//
+//     return hash;
+// }
+//
+// int main() {
+//     int numStrings;
+//     cout << "Enter the number of strings: ";
+//     cin >> numStrings;
+//
+//     vector<string> inputs(numStrings);
+//
+//     cout << "Enter " << numStrings << " strings:\n";
+//     for (int i = 0; i < numStrings; i++) {
+//         cin >> inputs[i];
+//     }
+//
+//     cout << "Problem 2 String hash codes (a = 33):\n";
+//     for (const string& str : inputs) {
+//         cout << "String: " << str << " -> " << hashCodeString(str) << endl;
+//     }
+//
+//     return 0;
+// }
+
+
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -19,9 +56,9 @@ int main() {
         keys.push_back(key);
     }
 
-    cout << "[Problem 1] Integer hash codes:\n";
+    
     for (int key : keys) {
-        cout << "Key: " << key << " Hash Code: " << hashCodeInt(key) << endl;
+        cout << key << " -> " << hashCodeInt(key) << endl;
     }
 
     return 0;
