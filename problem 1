@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int hashCodeInt(int key) {
+    return key;
+}
+
+int main() {
+    vector<int> keys;
+    int numKeys, key;
+
+    cout << "Enter the number of keys: ";
+    cin >> numKeys;
+
+    cout << "Enter " << numKeys << " integer keys:\n";
+    for (int i = 0; i < numKeys; i++) {
+        cin >> key;
+        keys.push_back(key);
+    }
+
+    cout << "[Problem 1] Integer hash codes:\n";
+    for (int key : keys) {
+        cout << "Key: " << key << " Hash Code: " << hashCodeInt(key) << endl;
+    }
+
+    return 0;
+}
